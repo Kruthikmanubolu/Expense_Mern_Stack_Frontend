@@ -58,11 +58,12 @@ const Signup = () => {
         const { data } = await signup({ username, email, password, confirmPassword });
         localStorage.setItem('token', data.token);
         localStorage.setItem('username', data.username);
+        setLoading(false);
         navigate('/login');
-        setLoading(false);
+        
       } catch (error) {
-        alert('Signup failed: ' + (error.response?.data?.message || 'Unknown error'));
         setLoading(false);
+        alert('Signup failed: ' + (error.response?.data?.message || 'Unknown error'));
         if (error.response?.data?.message) {
           setErrors({ backend: error.response.data.message });
         }
