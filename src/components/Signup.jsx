@@ -62,7 +62,7 @@ const Signup = () => {
         setLoading(false);
       } catch (error) {
         alert('Signup failed: ' + (error.response?.data?.message || 'Unknown error'));
-        setLoading(true);
+        setLoading(false);
         if (error.response?.data?.message) {
           setErrors({ backend: error.response.data.message });
         }
